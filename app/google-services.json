@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "352519252370",
+    "project_id": "revautohub",
+    "storage_bucket": "revautohub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352519252370:android:2e2529202c8bc3342a394b",
+        "android_client_info": {
+          "package_name": "com.example.revautohub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjwv_GasIRvNWftiul_l1Gku0TxPBfYto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
