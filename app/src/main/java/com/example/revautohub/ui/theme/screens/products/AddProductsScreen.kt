@@ -99,7 +99,7 @@ fun AddProductsScreen(navController:NavHostController){
         Scaffold(
             bottomBar = {
                 NavigationBar (
-                    containerColor = Color.LightGray,
+                    containerColor = Color.Black,
                     contentColor = Color.Black){
                     bottomNavItems.forEachIndexed { index, bottomNavItem ->
                         NavigationBarItem(
@@ -190,7 +190,7 @@ fun AddProductsScreen(navController:NavHostController){
 
                     // Start of Text Field with a dropdown
                     var mExpanded by remember { mutableStateOf(false) }
-                    val options = listOf("250g", "500g", "1 kg")
+                    val options = listOf("1L", "2L", "3L")
                     var productQuantity by remember { mutableStateOf("") }
                     var mTextFieldSize by remember { mutableStateOf(Size.Zero)}
                     val icon = if (mExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown
@@ -205,6 +205,8 @@ fun AddProductsScreen(navController:NavHostController){
                                     mTextFieldSize = coordinates.size.toSize()
                                 },
                             label = {Text("Choose product quantity")},
+
+
                             trailingIcon = {
                                 Icon(icon,"contentDescription",
                                     Modifier.clickable { mExpanded = !mExpanded })
@@ -359,7 +361,7 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context,navController: N
 
             },
                 shape = RoundedCornerShape(5.dp),
-                colors = ButtonDefaults.buttonColors(Color.Gray)) {
+                colors = ButtonDefaults.buttonColors(Color.Black)) {
                 Text(text = "Upload")
             }
         }

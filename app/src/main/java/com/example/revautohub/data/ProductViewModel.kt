@@ -7,10 +7,10 @@ import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation.NavController
-import com.example.mvvmandroid.models.Product
+import com.example.revautohub.models.Product
 import com.example.revautohub.navigation.ADD_PRODUCTS_URL
 import com.example.revautohub.navigation.ROUT_LOGIN
-import com.example.revautohub.navigation.VIEW_PRODUCTS_URL
+import com.example.revautohub.navigation.VIEW_Customer
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -46,7 +46,7 @@ class ProductViewModel(var navController: NavController, var context: Context) {
                         .child("Products/$productId")
                     databaseRef.setValue(product).addOnCompleteListener {
                         if (it.isSuccessful){
-                            navController.navigate(VIEW_PRODUCTS_URL)
+                            navController.navigate(VIEW_Customer)
                             Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
                         }else{
                             Toast.makeText(this.context, "Error", Toast.LENGTH_SHORT).show()

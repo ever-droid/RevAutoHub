@@ -13,20 +13,25 @@ import com.example.revautohub.ui.theme.screens.login.LoginScreen
 import com.example.revautohub.ui.theme.screens.products.AddProductsScreen
 import com.example.revautohub.ui.theme.screens.signup.SignupScreen
 import com.example.revautohub.ui.theme.screens.about.AboutScreen
+import com.example.revautohub.ui.theme.screens.booking.BookingScreen
+import com.example.revautohub.ui.theme.screens.details.DetailsScreen
 import com.example.revautohub.ui.theme.screens.home.HomeScreen
 
 import com.example.revautohub.ui.theme.screens.login.LoginScreen
 import com.example.revautohub.ui.theme.screens.products.AddProductsScreen
+import com.example.revautohub.ui.theme.screens.products.CustomerScreen
 import com.example.revautohub.ui.theme.screens.products.ViewProductsScreen
 import com.example.revautohub.ui.theme.screens.signup.SignupScreen
 import com.example.revautohub.ui.theme.screens.splash.SplashScreen
+import com.example.revautohub.ui.theme.screens.taskmanager.AddTaskScreen
+import com.example.revautohub.ui.theme.screens.taskmanager.ViewTaskScreen
 
 
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination:String = ROUT_HOME
+    startDestination:String = ROUT_SPLASH
 ) {
     NavHost(
         navController = navController,
@@ -58,6 +63,27 @@ fun AppNavHost(
         composable(VIEW_PRODUCTS_URL) {
             ViewProductsScreen(navController = navController)
         }
+
+        composable(ROUT_DETAILS) {
+            DetailsScreen(navController = navController)
+        }
+
+        composable(ROUT_BOOKING) {
+            BookingScreen(navController = navController)
+        }
+        composable(VIEW_Customer) {
+            CustomerScreen(navController = navController)
+        }
+
+
+        composable(ADD_TASK){
+            AddTaskScreen(navController = navController)
+        }
+        composable(VIEW_TASKS){
+            ViewTaskScreen(navController = navController)
+        }
+
+
 
 
 

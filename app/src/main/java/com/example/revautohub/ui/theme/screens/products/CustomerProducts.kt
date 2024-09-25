@@ -73,12 +73,14 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.revautohub.models.Product
 import com.example.revautohub.data.ProductViewModel
 import com.example.revautohub.navigation.ADD_PRODUCTS_URL
+import com.example.revautohub.navigation.ADD_TASK
+import com.example.revautohub.navigation.ROUT_BOOKING
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ViewProductsScreen(navController:NavHostController) {
+fun CustomerScreen(navController:NavHostController) {
     Column(modifier = Modifier.fillMaxSize()) {
 
         var context = LocalContext.current
@@ -171,7 +173,7 @@ fun ViewProductsScreen(navController:NavHostController) {
 
                     LazyColumn(){
                         items(products){
-                            ProductItem(
+                            ProductItem1(
                                 name = it.name,
                                 quantity = it.quantity,
                                 price = it.price,
@@ -198,7 +200,7 @@ fun ViewProductsScreen(navController:NavHostController) {
 
 
 @Composable
-fun ProductItem(name:String, quantity:String, price:String,phone:String, id:String,
+fun ProductItem1(name:String, quantity:String, price:String,phone:String, id:String,
                 navController:NavHostController,
                 productRepository:ProductViewModel, productImage:String) {
 
@@ -287,23 +289,28 @@ fun ProductItem(name:String, quantity:String, price:String,phone:String, id:Stri
                                     )
                                 }
                             }
-                            Row (
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.End
-                            ){
 
-                                IconButton(onClick = { productRepository.updateProduct(id) }) {
-                                    Icon(imageVector = Icons.Default.Edit, contentDescription = "", tint = Color.White)
+
+                            OutlinedButton(
+                                onClick = {
+                                    navController.navigate(ADD_TASK)
+
+
+                                },
+                                shape = RoundedCornerShape(8.dp),
+
+                                ) {
+                                Row {
+                                    Icon(
+                                        imageVector = Icons.Default.Send,
+                                        contentDescription = "Message Seller")
+                                    Spacer(modifier = Modifier.width(3.dp))
+                                    Text(
+                                        text = "Book Now"
+                                    )
                                 }
-
-                                Spacer(modifier = Modifier.width(5.dp))
-
-                                IconButton(onClick = { productRepository.deleteProduct(id) }) {
-                                    Icon(imageVector = Icons.Default.Delete, contentDescription = "", tint = Color.White)
-                                }
-
-
                             }
+
 
                         }
                         //end of button row
@@ -325,9 +332,9 @@ fun ProductItem(name:String, quantity:String, price:String,phone:String, id:Stri
 
 @Composable
 @Preview(showBackground = true)
-fun ViewProductsScreenPreview(){
+fun CustomerScreenPreview(){
 
-    ViewProductsScreen(navController = rememberNavController())
+    CustomerScreen(navController = rememberNavController())
 
 }
 
