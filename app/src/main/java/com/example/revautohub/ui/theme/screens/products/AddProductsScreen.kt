@@ -287,7 +287,7 @@ fun AddProductsScreen(navController:NavHostController){
 val bottomNavItems = listOf(
     BottomNavItem(
         title = "View",
-        route="view_products",
+        route="view",
         selectedIcon= Icons.Filled.Info,
         unselectedIcon= Icons.Outlined.Info,
         hasNews = false,

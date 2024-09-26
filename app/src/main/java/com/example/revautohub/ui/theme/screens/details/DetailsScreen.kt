@@ -68,6 +68,7 @@ import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.revautohub.R
+import com.example.revautohub.navigation.ADD_PRODUCTS_URL
 import com.example.revautohub.navigation.ADD_TASK
 import com.example.revautohub.navigation.ROUT_BOOKING
 import com.example.revautohub.navigation.ROUT_DETAILS
@@ -172,10 +173,10 @@ fun DetailsScreen(navController: NavController){
 
             floatingActionButton = {
                 FloatingActionButton(
-                    onClick = {  navController.navigate(ADD_TASK) },
+                    onClick = {  navController.navigate(ADD_PRODUCTS_URL) },
                     containerColor = Color.Yellow) {
                     IconButton(onClick = {
-                        navController.navigate(ADD_TASK)
+                        navController.navigate(ADD_PRODUCTS_URL)
 
                     }) {
                         Icon(imageVector = Icons.Default.Add, tint = black,
@@ -192,11 +193,8 @@ fun DetailsScreen(navController: NavController){
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
 
-                    Spacer(modifier = Modifier.height(70.dp), )
+                    Spacer(modifier = Modifier.height(100.dp), )
 
-
-
-                    Spacer(modifier = Modifier.height(4.dp))
 
                     Text(
                         text = "Find Your Fix!!",
@@ -206,7 +204,7 @@ fun DetailsScreen(navController: NavController){
                         textAlign = TextAlign.Center
 
                     )
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
                     Text(
                         text = "Out of Oil? We Bring the Fuel to You!",
                         fontSize = 18.sp,
@@ -220,7 +218,7 @@ fun DetailsScreen(navController: NavController){
                         Card(modifier = Modifier
                             .height(130.dp)
                             .width(100.dp)
-                            .padding(start = 20.dp)) {
+                            ) {
 
                             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
@@ -294,7 +292,7 @@ fun DetailsScreen(navController: NavController){
 
                     }//End of Row
 
-                    Spacer(modifier = Modifier.height(50.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
 
                     //CALLS
                     Button(onClick = { navController.navigate(VIEW_Customer) },
@@ -315,7 +313,7 @@ fun DetailsScreen(navController: NavController){
 
                     }
 
-                    Spacer(modifier = Modifier.height(50.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
                     Text(
                         text = "Stuck? We’ll Get You Moving!",
                         fontSize = 20.sp,
@@ -460,8 +458,8 @@ val bottomNavItems = listOf(
         badges=1
     ),
     BottomNavItem(
-        title = "Upload",
-        route="view",
+        title = "Booking",
+        route="add_task",
         selectedIcon=Icons.Filled.Info,
         unselectedIcon=Icons.Outlined.Info,
         hasNews = true,

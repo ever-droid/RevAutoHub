@@ -32,6 +32,7 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -55,11 +56,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -70,18 +73,28 @@ import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
+import com.example.revautohub.R
 import com.example.revautohub.models.Product
 import com.example.revautohub.data.ProductViewModel
 import com.example.revautohub.navigation.ADD_PRODUCTS_URL
 import com.example.revautohub.navigation.ADD_TASK
 import com.example.revautohub.navigation.ROUT_BOOKING
+import com.example.revautohub.ui.theme.black
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun CustomerScreen(navController:NavHostController) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .paint(
+            painterResource(id = R.drawable.yellowbg),
+            contentScale = ContentScale.FillBounds
+        )
+
+
+    ) {
 
         var context = LocalContext.current
         var productRepository = ProductViewModel(navController, context)
@@ -95,45 +108,7 @@ fun CustomerScreen(navController:NavHostController) {
 
         var selected by remember { mutableIntStateOf(0) }
         Scaffold(
-            bottomBar = {
-                NavigationBar (
-                    containerColor = Color.LightGray,
-                    contentColor = Color.Black){
-                    bottomNavItems.forEachIndexed { index, bottomNavItem ->
-                        NavigationBarItem(
-                            selected = index == selected,
-                            onClick = {
-                                selected = index
-                                navController.navigate(bottomNavItem.route)
-                            },
-                            icon = {
-                                BadgedBox(
-                                    badge = {
-                                        if (bottomNavItem.badges != 0) {
-                                            Badge (containerColor = Color.White){
-                                                Text(text = bottomNavItem.badges.toString())
-                                            }
-                                        } else if (bottomNavItem.hasNews) {
-                                            Badge()
-                                        }
-                                    }
-                                ) {
-                                    Icon(imageVector =
-                                    if (index == selected)
-                                        bottomNavItem.selectedIcon
-                                    else
-                                        bottomNavItem.unselectedIcon,
-                                        contentDescription = bottomNavItem.title)
-                                }
 
-                            },
-                            label = {
-                                Text(text = bottomNavItem.title)
-                            }
-                        )
-                    }
-                }
-            },
 
             topBar = {
                 TopAppBar(
@@ -148,12 +123,12 @@ fun CustomerScreen(navController:NavHostController) {
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = { /*TODO*/ },
-                    containerColor = Color.LightGray) {
+                    containerColor = Color.Yellow) {
                     IconButton(onClick = {
                         navController.navigate(ADD_PRODUCTS_URL)
-                    }) {
+                    },) {
                         Icon(imageVector = Icons.Default.Add,
-                            contentDescription = "menu")
+                            contentDescription = "menu", tint = black)
                     }
                 }
             },
@@ -277,6 +252,7 @@ fun ProductItem1(name:String, quantity:String, price:String,phone:String, id:Str
                                     mContext.startActivity(smsIntent)
                                 },
                                 shape = RoundedCornerShape(8.dp),
+                                colors = ButtonDefaults.buttonColors(Color.Black)
 
                                 ) {
                                 Row {
@@ -285,10 +261,15 @@ fun ProductItem1(name:String, quantity:String, price:String,phone:String, id:Str
                                         contentDescription = "Message Seller")
                                     Spacer(modifier = Modifier.width(3.dp))
                                     Text(
-                                        text = "Message Seller"
+                                        text = "Message Seller",
+                                        color = Color.White
                                     )
                                 }
                             }
+
+
+                            
+                            Spacer(modifier = Modifier.width(10.dp))
 
 
                             OutlinedButton(
@@ -298,6 +279,7 @@ fun ProductItem1(name:String, quantity:String, price:String,phone:String, id:Str
 
                                 },
                                 shape = RoundedCornerShape(8.dp),
+                                colors = ButtonDefaults.buttonColors(black)
 
                                 ) {
                                 Row {
@@ -306,7 +288,8 @@ fun ProductItem1(name:String, quantity:String, price:String,phone:String, id:Str
                                         contentDescription = "Message Seller")
                                     Spacer(modifier = Modifier.width(3.dp))
                                     Text(
-                                        text = "Book Now"
+                                        text = "Book Now",
+                                        color = Color.White
                                     )
                                 }
                             }
